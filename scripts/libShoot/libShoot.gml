@@ -1,4 +1,10 @@
 
+enum Sides {
+	ours,
+	theirs,
+	neutral,
+}
+
 default_bullet_obj = libOBullet
 default_hitable_obj = libOHitable
 

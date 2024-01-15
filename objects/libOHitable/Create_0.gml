@@ -1,10 +1,4 @@
 
-enum Sides {
-	ours,
-	theirs,
-	neutral,
-}
-
 side = Sides.ours
 hp = 5
 

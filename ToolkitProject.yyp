@@ -54,11 +54,11 @@
     {"id":{"name":"libOInput","path":"objects/libOInput/libOInput.yy",},},
     {"id":{"name":"oTopDownMove","path":"objects/oTopDownMove/oTopDownMove.yy",},},
     {"id":{"name":"oSimpleBullet","path":"objects/oSimpleBullet/oSimpleBullet.yy",},},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"rmTopDown","path":"rooms/rmTopDown/rmTopDown.yy",},},
   ],
   "RoomOrderNodes": [
     {"roomId":{"name":"rmStart","path":"rooms/rmStart/rmStart.yy",},},
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rmTopDown","path":"rooms/rmTopDown/rmTopDown.yy",},},
     {"roomId":{"name":"rmShooting","path":"rooms/rmShooting/rmShooting.yy",},},
   ],
   "templateType": null,

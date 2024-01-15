@@ -1,14 +1,14 @@
 {
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
-  "name": "Room1",
+  "name": "rmTopDown",
   "creationCodeFile": "",
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
   "instanceCreationOrder": [
-    {"name":"inst_6E7CE59E","path":"rooms/Room1/Room1.yy",},
-    {"name":"inst_29D0F57D","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_6E7CE59E","path":"rooms/rmTopDown/rmTopDown.yy",},
+    {"name":"inst_29D0F57D","path":"rooms/rmTopDown/rmTopDown.yy",},
   ],
   "isDnd": false,
   "layers": [
