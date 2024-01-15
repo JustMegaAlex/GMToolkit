@@ -1,0 +1,3 @@
+- keep packages in their own folders
+- keep packages small
+- keep packages as isolated as possible

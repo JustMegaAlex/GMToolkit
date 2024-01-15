@@ -1,0 +1,2 @@
+- shooting:
+	- adjust bullet spawn coords (outside the spawner)
