@@ -12,18 +12,18 @@
   "defaultScriptType": 1,
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"AlexLibs","folderPath":"folders/AlexLibs.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menus","folderPath":"folders/AlexLibs/Menus.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/AlexLibs/Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/AlexLibs/Scripts.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shooting","folderPath":"folders/AlexLibs/Shooting.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/AlexLibs/Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shooting","folderPath":"folders/AlexLibs/Shooting.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menus","folderPath":"folders/AlexLibs/Menus.yy",},
   ],
   "IncludedFiles": [],
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.108",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"ToDo","path":"notes/ToDo/ToDo.yy",},},
