@@ -25,9 +25,8 @@ function move_coord_contact_glide(hsp, vsp, obj) {
 
 function move_coord_contact_obj(hsp, vsp, obj) {
 	move_coord(hsp, vsp)
-	//collision
 	var contact = instance_place(x, y, obj)
-	if contact  {
+	while contact {
 		// compute relative movement
 		var relhsp = hsp - contact.hsp
 		var relvsp = vsp - contact.vsp
@@ -37,9 +36,13 @@ function move_coord_contact_obj(hsp, vsp, obj) {
 	        x -= lengthdir_x(1, reldir)
 	        y -= lengthdir_y(1, reldir)
 		}
-		return contact
+		var new_contact = instance_place(x, y, obj)
+		if !new_contact {
+			return contact
+		}
+		contact = new_contact
 	}
-	return noone
+	return contact
 }
 
 function move_contact_obj(sp, dir, obj) {
