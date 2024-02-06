@@ -11,7 +11,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Objects",
-    "path": "folders/AlexLibs/Objects.yy",
+    "path": "folders/Libraries/AlexLibs/Objects.yy",
   },
   "parentObjectId": null,
   "persistent": true,

@@ -10,7 +10,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Menus",
-    "path": "folders/AlexLibs/Menus.yy",
+    "path": "folders/Libraries/AlexLibs/Menus.yy",
   },
   "parentObjectId": null,
   "persistent": false,

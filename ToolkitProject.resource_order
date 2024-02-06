@@ -1,11 +1,11 @@
 {
   "FolderOrderSettings": [
-    {"name":"AlexLibs","order":15,"path":"folders/AlexLibs.yy",},
-    {"name":"Menus","order":4,"path":"folders/AlexLibs/Menus.yy",},
-    {"name":"Scripts","order":1,"path":"folders/AlexLibs/Scripts.yy",},
-    {"name":"Shooting","order":3,"path":"folders/AlexLibs/Shooting.yy",},
-    {"name":"Sprites","order":2,"path":"folders/AlexLibs/Sprites.yy",},
+    {"name":"Menus","order":4,"path":"folders/Libraries/AlexLibs/Menus.yy",},
+    {"name":"Scripts","order":1,"path":"folders/Libraries/AlexLibs/Scripts.yy",},
+    {"name":"Shooting","order":3,"path":"folders/Libraries/AlexLibs/Shooting.yy",},
+    {"name":"Sprites","order":2,"path":"folders/Libraries/AlexLibs/Sprites.yy",},
     {"name":"Rooms","order":9,"path":"folders/Rooms.yy",},
+    {"name":"Libraries","order":18,"path":"folders/Libraries.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"oTopDownAimCamera","order":4,"path":"objects/oTopDownAimCamera/oTopDownAimCamera.yy",},

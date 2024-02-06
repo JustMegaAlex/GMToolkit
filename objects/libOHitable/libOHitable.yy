@@ -10,7 +10,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Shooting",
-    "path": "folders/AlexLibs/Shooting.yy",
+    "path": "folders/Libraries/AlexLibs/Shooting.yy",
   },
   "parentObjectId": null,
   "persistent": false,
