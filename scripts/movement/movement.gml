@@ -23,7 +23,7 @@ function move_coord_contact_glide(hsp, vsp, obj) {
 	}
 }
 
-function move_coord_contact_obj(hsp, vsp, obj) {
+function move_coord_contact_obj2(hsp, vsp, obj) {
 	move_coord(hsp, vsp)
 	var contact = instance_place(x, y, obj)
 	while contact {
@@ -45,15 +45,42 @@ function move_coord_contact_obj(hsp, vsp, obj) {
 	return contact
 }
 
-function move_contact_obj(sp, dir, obj) {
-	move(sp, dir)
-	//collision
+function move_coord_contact_obj(hsp, vsp, obj) {
+	move_coord(hsp, vsp)
 	var contact = instance_place(x, y, obj)
-	if contact {
+	while contact {
+		// compute relative movement
+		var dir = point_direction(0, 0, hsp, vsp)
 		// move out of an object
 		while place_meeting(x, y, contact) {
 	        x -= lengthdir_x(1, dir)
 	        y -= lengthdir_y(1, dir)
 		}
+		var new_contact = instance_place(x, y, obj)
+		if !new_contact {
+			return contact
+		}
+		contact = new_contact
 	}
+	return contact
+}
+
+function move_contact_obj(sp, dir, obj) {
+	move(sp, dir)
+	//collision
+	var contact = instance_place(x, y, obj)
+	while contact {
+		// compute relative movement
+		// move out of an object
+		while place_meeting(x, y, contact) {
+	        x -= lengthdir_x(1, dir)
+	        y -= lengthdir_y(1, dir)
+		}
+		var new_contact = instance_place(x, y, obj)
+		if !new_contact {
+			return contact
+		}
+		contact = new_contact
+	}
+	return contact
 }
