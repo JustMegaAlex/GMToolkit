@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "libShoot",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Shooting",
-    "path": "folders/Libraries/AlexLibs/Shooting.yy",
+  "$GMScript":"",
+  "%Name":"libShoot",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"libShoot",
+  "parent":{
+    "name":"Shooting",
+    "path":"folders/Libraries/AlexLibs/Shooting.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

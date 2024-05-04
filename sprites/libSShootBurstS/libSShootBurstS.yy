@@ -1,10 +1,10 @@
 {
   "$GMSprite":"",
-  "%Name":"libSBullet",
+  "%Name":"libSShootBurstS",
   "bboxMode":0,
-  "bbox_bottom":3,
+  "bbox_bottom":7,
   "bbox_left":0,
-  "bbox_right":7,
+  "bbox_right":13,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,12 +16,12 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":4,
+  "height":8,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"a48596dd-d85a-4886-8fb8-188d737916f7","blendMode":0,"displayName":"default","isLocked":false,"name":"a48596dd-d85a-4886-8fb8-188d737916f7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"libSBullet",
+  "name":"libSShootBurstS",
   "nineSlice":null,
   "origin":3,
   "parent":{
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"libSBullet",
+    "%Name":"libSShootBurstS",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"libSBullet",
+    "name":"libSShootBurstS",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,14 +69,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c7450634-ee8b-4a92-ba5f-4dab0b6d4a7e","path":"sprites/libSBullet/libSBullet.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e590c7f7-2e8d-41df-b2cf-869402579c5c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c7450634-ee8b-4a92-ba5f-4dab0b6d4a7e","path":"sprites/libSShootBurstS/libSShootBurstS.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"001dd1fd-8e1a-492e-bee1-e53ab606ada4","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":2,
+    "yorigin":4,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":8,
+  "width":14,
 }

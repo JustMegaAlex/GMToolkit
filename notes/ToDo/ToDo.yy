@@ -1,9 +1,11 @@
 {
-  "resourceType": "GMNotes",
-  "resourceVersion": "1.1",
-  "name": "ToDo",
-  "parent": {
-    "name": "ToolkitProject",
-    "path": "ToolkitProject.yyp",
+  "$GMNotes":"",
+  "%Name":"ToDo",
+  "name":"ToDo",
+  "parent":{
+    "name":"ToolkitProject",
+    "path":"ToolkitProject.yyp",
   },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
 }
