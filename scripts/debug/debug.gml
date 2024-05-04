@@ -1,19 +1,19 @@
-/// updates variables of debug scripts
-/// it's suggested to put this into some head object
-/// in which debug_draw_var() is called
 
+//// initialize needed vars for debug drawing
 function debug_draw_ini() {
 	global.VAR_BAR_LENGTH = 0
 	global.VAR_BAR_X = 0
+	global.VAR_BAR_Y_BASE = 0
 	global.VAR_BAR_Y = 0
-	global.VAR_BAR_ROW_DELTA = 30
+	global.VAR_BAR_ROW_DELTA = 20
+	global.DEBUG = true
 }
 
 //// Use this function once per step somewhere
 function debug_draw_update() {
 	global.VAR_BAR_LENGTH = 0
 	global.VAR_BAR_X = 30
-	global.VAR_BAR_Y = 30
+	global.VAR_BAR_Y = global.VAR_BAR_Y_BASE
 }
 
 //// Use following functions in DrawGUI

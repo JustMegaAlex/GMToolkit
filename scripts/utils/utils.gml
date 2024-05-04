@@ -214,20 +214,23 @@ function object_name(inst) {
 	return object_get_name(inst.object_index)
 }
 
+// stub function to use as a deafault callback
+function scr_stub() {}
+
 function mouse_collision(obj_or_inst) {
 	return collision_point(mouse_x, mouse_y, obj_or_inst, false, false)
 }
 
 function Timer(time) constructor {
 	self.time = time
-	self.timer = 0
+	self.timer = time
 	
 	function update() {
 		self.timer -= timer > 0
 		return self.timer
 	}
 
-	function start() {
+	function reset() {
 		self.timer = self.time	
 	}
 
@@ -236,22 +239,20 @@ function Timer(time) constructor {
 	}
 }
 
-function is_animation_end() {
-	static get_treshold = function() {
-		var tmp = sprite_frames_per_step(sprite_index)
-		return sprite_frames_per_step(sprite_index)
-	}
-	return abs(image_index - (image_number - 1)) < get_treshold()
+function _anim_get_treshold() {
+	return sprite_frames_per_step(sprite_index)
 }
 
-function is_animation_frame(index) {
-	// use inside an object
-	var anim_fps = (image_speed * sprite_get_speed(sprite_index) / game_get_speed(gamespeed_fps))
-	return abs(image_index - index) < anim_fps
+function is_animation_end() {
+	return abs(image_index - (image_number - 1)) < _anim_get_treshold()
+}
+
+function is_animation_at_frame(frame) {
+	var delta = image_index - frame
+	return delta >= 0 and delta <= _anim_get_treshold()
 }
 
 function sprite_frames_per_step(spr) {
-	var tmp = sprite_get_speed(spr)
 	if sprite_get_speed_type(spr) == spritespeed_framespersecond {
 		return sprite_get_speed(spr) / room_speed 
 	} else {
@@ -270,7 +271,6 @@ function ensure_singleton() {
 function is_html_build() {
 	return os_browser != browser_not_a_browser
 }
-
 //// Shortcuts
 function Randomer(first, second=undefined) constructor {
     self.from = first
@@ -310,10 +310,6 @@ function irandomer(first, second=undefined) {
 function check_bitwise(src, dest) {
 	return src & power(2, dest)
 }
-
-
-
-
 
 
 
