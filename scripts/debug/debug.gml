@@ -6,8 +6,7 @@ function debug_draw_ini() {
 	global.VAR_BAR_LENGTH = 0
 	global.VAR_BAR_X = 0
 	global.VAR_BAR_Y = 0
-	global.VAR_BAR_ROW_DELTA = 20
-	global.DEBUG = true
+	global.VAR_BAR_ROW_DELTA = 30
 }
 
 //// Use this function once per step somewhere
@@ -54,7 +53,6 @@ function debug_draw_list(list, x0, y0) {
 function debug_draw_var(text, var_) {
 	if not global.DEBUG
 		return false
-	var font = draw_get_font()
 	var h_allign = draw_get_halign()
 	draw_set_halign(fa_left)
 	global.VAR_BAR_LENGTH += 1;
@@ -62,6 +60,5 @@ function debug_draw_var(text, var_) {
 		global.VAR_BAR_Y+global.VAR_BAR_LENGTH*global.VAR_BAR_ROW_DELTA,
 		text+" "+string(var_)
 	)
-	draw_set_font(font)
 	draw_set_halign(h_allign)
 }

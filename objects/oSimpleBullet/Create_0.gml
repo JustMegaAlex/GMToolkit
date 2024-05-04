@@ -7,10 +7,6 @@ function bring_damage() {
 	}
 }
 
-function move() {
-	move(sp, image_angle)
-}
-
 visible = false
 image_speed = 0
 // become visible back

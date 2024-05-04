@@ -42,78 +42,12 @@ function IterStruct(_struct) constructor {
 	}
 }
 
-function IterArray(_arr) constructor {
-	arr = _arr
-	current_value = undefined
-	len = array_length(arr)
-	i = -1
-	
-	if !is_array(_arr)
-		test = true
-	
-	next = function() {
-		i++
-		if i >= len
-			return undefined
-		current_value = arr[i]
-		return current_value
-	}
-	
-	get = function(shift=0) {
-		if i == -1
-			throw "\nIterArray.next() wasn't called after creation of IterArray instance\n"
-		var ii = i + shift
-        if ii < 0 or ii >= len
-            return undefined
-        return arr[ii]
-	}
-	
-	reset = function() {
-		current_value = undefined
-		i = -1
-	}
-}
-
-function IterInstances(_obj) constructor {
-	obj = _obj
-	current_value = undefined
-	len = instance_number(obj)
-	i = -1
-	
-	next = function() {
-		i++
-		if i >= len
-			return undefined
-		current_value = instance_find(obj, i)
-		return current_value
-	}
-	
-	get = function() {
-		if i == -1
-			throw "\IterInstances.next() wasn't called after creation of IterArray instance\n"
-		return current_value
-	}
-	
-	reset = function() {
-		current_value = undefined
-		i = -1
-	}
-}
-
-function value_between(val, min_, max_){
-	return (val >= min_) and (val < max_)
-}
-
 function approach(val, to, amount) {
 	var delta = to - val
 	if abs(delta) < amount
 		return to
 	var sp = amount * sign(delta) 
 	return val + sp
-}
-
-function array_back(arr) {
-    return arr[array_length(arr) - 1]
 }
 
 function array_sum(arr) {
@@ -173,41 +107,6 @@ function array_empty(arr) {
 	return array_length(arr) == 0
 }
 
-function cycle_increase(val, min_, max_) {
-	val++
-	var inbounds = val < max_
-	return val * inbounds + min_ * !inbounds
-}
-
-function cycle_decrease(val, min_, max_) {
-	val--
-	var inboudns = val >= min_
-	return val * inboudns + (max_ - 1) * !inboudns
-}
-
-// 5 6 4 9 -> 5
-// 5 -7 4 9 -> 7
-// 4 1 0 5 -> 0
-// 6 6 0 6 -> 5
-function cycle_change(val, amount, min_, max_) {
-	val += amount // 10
-	var delta = max_ - min_ // 5
-	if val < min_ {
-		val = max_ - abs(min_ - val) mod delta + 1
-		// workaround for case: 6 6 0 6 -> 5
-		if val > max_
-			return min_ + 1
-		return val
-	}
-	if val > max_ {
-		val = min_ + abs(val - max_) mod delta - 1
-		if val < min_
-			return max_ - 1
-		return val
-	}
-	return val
-}
-
 function chance(p) {
 	return random(1) < p
 }
@@ -265,12 +164,6 @@ function point_dir(xx, yy) {
 	return point_direction(id.x, id.y, xx, yy)
 }
 
-function get_instance_center(inst) {
-	var w = sprite_get_width(inst.sprite_index)
-	var h = sprite_get_height(inst.sprite_index)
-	return new Vec2d(inst.x + w * 0.5, inst.y + h * 0.5)
-}
-
 function struct_sum(struct) {
 	var names = variable_struct_get_names(struct)
 	var res = 0
@@ -278,32 +171,6 @@ function struct_sum(struct) {
 		res += struct[$ names[i]]	
 	}
 	return res
-}
-
-function instance_create_args(xx, yy, layer, obj, args) {
-	var inst = instance_create_layer(xx, yy, layer, obj)
-	var argnames = variable_struct_get_names(args)
-	for (var i = 0; i < array_length(argnames); ++i) {
-	    var name = argnames[i]
-		var val = args[$ name]
-		variable_instance_set(inst, name, val)
-	}
-	return inst
-}
-
-function draw_text_above_me(text) {
-	var fnt_size = font_get_size(draw_get_font())
-	var xx = x - sprite_xoffset + sprite_width * 0.5
-	var yy = y - sprite_yoffset - sprite_height * 0.1 - fnt_size
-	draw_text(xx, yy, text)
-}
-
-function foreach(arr, fun, args=[], kwargs={}) {
-	for (var i = 0; i < array_length(arr); ++i) {
-	    if fun(arr[i], args, kwargs)
-			return true
-	}
-	return false
 }
 
 function collision_line_width(x0, y0, x1, y1, obj, w) {
@@ -338,33 +205,14 @@ function make_late_init() {
 	alarm[0] = 1
 }
 
-function inst_set_pos(inst, xx, yy) {
-	inst.x = xx
-	inst.y = yy
-}
-
-function get_instances(obj) {
-    var it = new IterInstances(obj)
-    var arr = []
-    while it.next()
-        array_push(arr, it.get())
-    return arr
-}
-
 function get_random_instance(obj) {
-	var res = instance_find(obj, irandom(instance_number(obj) - 1))
-	if res == noone {
-		show_debug_message("instance_find() returned -4")
-	}
-	return res
+	return instance_find(obj, irandom(instance_number(obj) - 1))
+
 }
 
 function object_name(inst) {
 	return object_get_name(inst.object_index)
 }
-
-// stub function to use as a deafault callback
-function scr_stub() {}
 
 function mouse_collision(obj_or_inst) {
 	return collision_point(mouse_x, mouse_y, obj_or_inst, false, false)
@@ -382,6 +230,10 @@ function Timer(time) constructor {
 	function start() {
 		self.timer = self.time	
 	}
+
+	function stop() {
+		self.timer = 0	
+	}
 }
 
 function is_animation_end() {
@@ -390,6 +242,12 @@ function is_animation_end() {
 		return sprite_frames_per_step(sprite_index)
 	}
 	return abs(image_index - (image_number - 1)) < get_treshold()
+}
+
+function is_animation_frame(index) {
+	// use inside an object
+	var anim_fps = (image_speed * sprite_get_speed(sprite_index) / game_get_speed(gamespeed_fps))
+	return abs(image_index - index) < anim_fps
 }
 
 function sprite_frames_per_step(spr) {
@@ -407,6 +265,10 @@ function ensure_singleton() {
 		return false
 	}
 	return true
+}
+
+function is_html_build() {
+	return os_browser != browser_not_a_browser
 }
 
 //// Shortcuts
@@ -442,3 +304,18 @@ function randomer(first, second=undefined) {
 function irandomer(first, second=undefined) {
     return new IRandomer(first, second).__get
 }
+
+/// @param src - integer representing bit array, e.g. 2 -> 10, 6 -> 110
+/// @param dest - index of a bit to check in src
+function check_bitwise(src, dest) {
+	return src & power(2, dest)
+}
+
+
+
+
+
+
+
+
+
