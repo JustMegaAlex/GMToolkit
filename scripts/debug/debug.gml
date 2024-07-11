@@ -58,7 +58,7 @@ function DebugDrawVar(text, var_) {
     var font = draw_get_font()
     var h_allign = draw_get_halign()
     draw_set_halign(fa_left)
-    global.VAR_BAR_LENGTH += 1;
+    global.VAR_BAR_LENGTH += 1
     draw_text(global.VAR_BAR_X,
         global.VAR_BAR_Y + global.VAR_BAR_LENGTH * global.VAR_BAR_ROW_DELTA,
         text + " " + string(var_)

@@ -62,7 +62,7 @@ function UiSlider(
 	function perform_hook(slf) {}
 }
 
-function make_simple_fullnes_bar(xx, yy, spr=spr_fullness_bar, layer="ui", fullness=1) {
+function MakeSimpleFullnessBar(xx, yy, spr=spr_fullness_bar, layer="ui", fullness=1) {
 	var inst = instance_create_layer(xx, yy, layer, obj_ui_fullness_bar)
 	inst.sprite_index = spr
 	inst.bar_fullness = fullness

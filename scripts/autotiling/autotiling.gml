@@ -70,7 +70,7 @@ function Autotiling(layer, x_, y_,
 	}
 }
 
-function autotiling_example() {
+function AutotilingExample() {
 	//// just call me somwhere
 	// set this parameters as you like
 	var layer_name = "Instances"

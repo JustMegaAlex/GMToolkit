@@ -1,6 +1,6 @@
 
 
-var normalized = day_time/100;
+var normalized = day_time/100
 //normalized = normalized < 1 ? normalized : (2 - normalized)
 
 // turn on shader
