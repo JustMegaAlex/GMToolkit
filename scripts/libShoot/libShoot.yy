@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"libShoot",
   "isCompatibility":false,
   "isDnD":false,

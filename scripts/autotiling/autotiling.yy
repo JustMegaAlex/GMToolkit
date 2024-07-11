@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"autotiling",
   "isCompatibility":false,
   "isDnD":false,
