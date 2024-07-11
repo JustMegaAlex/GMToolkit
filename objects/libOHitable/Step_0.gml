@@ -1,4 +1,4 @@
 
-if libOInput.key_shoot_pressed {
+if oInput.key_shoot_pressed {
 	shoot()
 }

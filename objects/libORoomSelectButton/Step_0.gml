@@ -6,7 +6,7 @@ interacting = mouse_collision(id)
 if interacting {
 	image_index = _interact_img
 	// just pressed
-	if libOInput.key_shoot_pressed {
+	if oInput.key_shoot_pressed {
 		image_index = _checked_img
 		room_goto(room_to_start)
 	}
