@@ -1,37 +1,37 @@
 
-function camera_set_pos(id, x, y) {
-	var cam = view_camera[id]
+function camera_set_pos(x, y) {
+    var cam = view_camera[0]
 	camera_set_view_pos(cam,
 						x-camera_get_view_width(cam)*0.5,
 						y-camera_get_view_height(cam)*0.5)
 }
 
-function camw(ind) {
-	return camera_get_view_width(view_camera[ind])
+function camw() {
+	return camera_get_view_width(view_camera[0])
 }
 
-function camh(ind) {
-	return camera_get_view_height(view_camera[ind])
+function camh() {
+	return camera_get_view_height(view_camera[0])
 }
 
-function camx(ind) {
-	return camera_get_view_x(view_camera[ind])
+function camx() {
+	return camera_get_view_x(view_camera[0])
 }
 
-function camy(ind) {
-	return camera_get_view_y(view_camera[ind])
+function camy() {
+	return camera_get_view_y(view_camera[0])
 }
 
-function camx_cent(ind) {
-	return camera_get_view_x(view_camera[ind]) + camw(ind) * 0.5
+function camx_cent() {
+	return camera_get_view_x(view_camera[0]) + camw() * 0.5
 }
 
-function camy_cent(ind) {
-	return camera_get_view_y(view_camera[ind]) + camh(ind) * 0.5
+function camy_cent() {
+	return camera_get_view_y(view_camera[0]) + camh() * 0.5
 }
 
-function point_in_camera(xx, yy, ind) {
-	var cx = camx(ind), cy = camy(ind)
-	return (xx > cx) and (xx < (cx + camw(ind)))
-		   and (yy > cy) and (yy < (cy + camy(ind)))
+function point_in_camera(xx, yy) {
+	var cx = camx(), cy = camy()
+	return (xx > cx) and (xx < (cx + camw()))
+		   and (yy > cy) and (yy < (cy + camy()))
 }

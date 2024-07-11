@@ -1,25 +1,30 @@
 /// updates variables of debug scripts
 /// it's suggested to put this into some head object
 /// in which debug_draw_var() is called
+#macro DEBUG false
+#macro Dev:DEBUG true
 
+VAR_BAR_LENGTH = 0
+VAR_BAR_X = 0
+VAR_BAR_Y = 0
+VAR_BAR_ROW_DELTA = 20
 function debug_draw_ini() {
 	global.VAR_BAR_LENGTH = 0
 	global.VAR_BAR_X = 0
 	global.VAR_BAR_Y = 0
 	global.VAR_BAR_ROW_DELTA = 20
-	global.DEBUG = true
 }
 
 //// Use this function once per step somewhere
 function debug_draw_update() {
 	global.VAR_BAR_LENGTH = 0
 	global.VAR_BAR_X = 30
-	global.VAR_BAR_Y = global.VAR_BAR_Y_BASE
+	global.VAR_BAR_Y = 30
 }
 
 //// Use following functions in DrawGUI
 function debug_draw_grid(grid, x0, y0) {
-	if not global.DEBUG
+	if not DEBUG
 		return false
 	var i, j
 	for(i=0;i<ds_grid_width(grid); i+=1) {
@@ -30,7 +35,7 @@ function debug_draw_grid(grid, x0, y0) {
 }
 
 function debug_draw_array2d(arr, x0, y0) {
-	if not global.DEBUG
+	if not DEBUG
 		return false
 	var i, j
 	var w = array_length(arr)
@@ -43,7 +48,7 @@ function debug_draw_array2d(arr, x0, y0) {
 }
 
 function debug_draw_list(list, x0, y0) {
-	if not global.DEBUG
+	if not DEBUG
 		return false
 	var i
 	for(i=0; i<ds_list_size(list); i+=1) {
@@ -52,7 +57,7 @@ function debug_draw_list(list, x0, y0) {
 }
 
 function debug_draw_var(text, var_) {
-	if not global.DEBUG
+	if not DEBUG
 		return false
 	var font = draw_get_font()
 	var h_allign = draw_get_halign()
