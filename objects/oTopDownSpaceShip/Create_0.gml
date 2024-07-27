@@ -1,15 +1,15 @@
 
 
-function set_sp_to(sp, dir) {
+function setSpTo(sp, dir) {
 	hsp_to = lengthdir_x(sp, dir)
 	vsp_to = lengthdir_y(sp, dir)
 }
 
-function set_dir_to(_dir_to) {
+function setDirTo(_dir_to) {
 	dir_to = _dir_to
 }
 
-function update_dir(rot_sp=rotary_sp) {
+function updateDir(rot_sp=rotary_sp) {
 	var diff = angle_difference(dir_to, dir)
 	if abs(diff) < rot_sp {
 		dir = dir_to
@@ -18,13 +18,13 @@ function update_dir(rot_sp=rotary_sp) {
 	dir += rotary_sp * sign(diff)
 }
 
-function update_sp(accelerate=true) {
+function updateSp(accelerate=true) {
 	if accelerate {
-		hsp = approach(hsp, hsp_to, acc)
-		vsp = approach(vsp, vsp_to, acc)
+		hsp = Approach(hsp, hsp_to, acc)
+		vsp = Approach(vsp, vsp_to, acc)
 	} else {
-		hsp = approach(hsp, 0, acc)
-		vsp = approach(vsp, 0, acc)	
+		hsp = Approach(hsp, 0, acc)
+		vsp = Approach(vsp, 0, acc)	
 	}
 }
 
@@ -36,7 +36,7 @@ function shoot(dir, obj=oSimpleBullet, spr=sSimpleBullet, sp=undefined) {
 		inst.sp = sp
 	
 	inst.side = side
-	oParticles.emit_shoot_burst(x, y, dir)
+	oParticles.emitShootBurst(x, y, dir)
 }
 
 hp = 7
@@ -47,7 +47,6 @@ vsp = 0
 hsp_to = 0
 vsp_to = 0
 acc = 0.5
-vacc = 0
 input_v = 0
 move_h = 0
 move_v = 0
@@ -60,27 +59,18 @@ sp_gain = 1
 
 image_speed = 0
 
-reload_time = global.player_reload_time
+reload_timer = MakeTimer(20)
 reloading = 0
-bullet_sp = global.player_bullet_sp
+bullet_sp = 20
 bullet_sprite = libSBullet
 
 side = Sides.ours
 
 // systems
-hp_max = global.player_hp_max
+hp_max = 10
 hp = hp_max
 
-// drawing compas
-compas_min_dist = 600
-compas_r = 100
 
-// attaching mechanic
-attach_resource_range = 64
-last_attached_inst = id
-list_nearest_resources = ds_list_create()
-attach_max_count = 5
-attach_count = 0
 acc = 0.3
 
 hp = 0

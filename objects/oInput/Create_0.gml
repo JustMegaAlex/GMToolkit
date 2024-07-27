@@ -1,5 +1,5 @@
 
-if !ensure_singleton() {
+if !EnsureSingleton() {
 	exit
 }
 
@@ -30,9 +30,9 @@ mouse_x_prev = mouse_x
 mouse_y_prev = mouse_y
 
 active = true
-function SetActive() {
+function setActive() {
     active = true
 }
-function SetInactive() {
+function setInactive() {
     active = false
 }

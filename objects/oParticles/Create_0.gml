@@ -1,4 +1,4 @@
-ensure_singleton()
+EnsureSingleton()
 
 psys = part_system_create()
 
@@ -13,7 +13,7 @@ part_type_life(p_shoot_burst, lifetime, lifetime)
 part_type_alpha2(p_shoot_burst, 1, 0)
 part_type_size(p_shoot_burst, size, size, size_incr, 0)
 
-function emit_shoot_burst(x, y, dir) {
+function emitShootBurst(x, y, dir) {
     part_type_direction(p_shoot_burst, dir, dir, 0, 0)
     part_type_orientation(p_shoot_burst, dir, dir, 0, 0, false)
     part_particles_create(psys, x, y, p_shoot_burst, 1)
@@ -29,7 +29,7 @@ part_type_speed(p_explosion, sp, sp, 0, 0)
 part_type_life(p_explosion, lifetime, lifetime)
 part_type_size(p_explosion, size, size, size_incr, 0)
 
-function emit_explosion(x, y) {
+function emitExplosion(x, y) {
     part_particles_create(psys, x, y, p_explosion, 1)
 }
 
@@ -43,7 +43,7 @@ part_type_orientation(p_explosion_big, 0, 360, 0, 0, 0)
 part_type_life(p_explosion_big, 20, 60)
 part_type_size(p_explosion_big, size, size, 0, 0.3)
 
-function emit_explosion_big(x, y, r, num = 30) {
+function emitExplisionBig(x, y, r, num = 30) {
     repeat num {
         var dist = random(r)
         var dir = random(360)
@@ -64,6 +64,6 @@ part_type_life(p_bullet_burst, lifetime, lifetime)
 part_type_size(p_bullet_burst, size, size, -0.066, 0)
 //part_type_alpha2(p_bullet_burst, 1, 0)
 
-function emit_bullet_burst(x, y) {
+function emitBulletBurst(x, y) {
     part_particles_create(psys, x, y, p_bullet_burst, 1)
 }

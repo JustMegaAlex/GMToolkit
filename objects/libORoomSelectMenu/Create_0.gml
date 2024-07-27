@@ -3,7 +3,7 @@ button_obj = libORoomSelectButton
 // settle up rooms buttons
 room_ind = 0
 room_count = 0
-var but_x = scr_camw(0) * 0.5
+var but_x = CamW() * 0.5
 var but_y_st = 30
 var y_delta = sprite_get_height(object_get_sprite(button_obj)) + 30
 while room_exists(room_ind) {

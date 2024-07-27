@@ -1,10 +1,10 @@
 
 function aim_dist() {
-	return point_distance(scr_camx_cent(0), scr_camy_cent(0), mouse_x, mouse_y)
+	return point_distance(CamXCent(), CamYCent(), mouse_x, mouse_y)
 }
 
 function aim_angle() {
-	return point_direction(scr_camx_cent(0), scr_camy_cent(0), mouse_x, mouse_y)
+	return point_direction(CamXCent(), CamYCent(), mouse_x, mouse_y)
 }
 
 anchor_radius_gain = 2

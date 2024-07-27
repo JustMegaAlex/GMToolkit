@@ -16,4 +16,4 @@ side = Sides.ours
 reload_time = 30
 reloading = 0
 
-scr_camera_set_pos(0, x, y)
+CameraSetPos(x, y)

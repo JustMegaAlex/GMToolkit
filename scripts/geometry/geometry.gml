@@ -12,13 +12,13 @@ function Vec2(xx, yy, is_polar=false) constructor {
 	x = xx
 	y = yy
 
-	add_coords = function(xx, yy) {
+	addCoords = function(xx, yy) {
 		self.x += xx
 		self.y += yy
 		return self
 	}
 
-	add_coords_ = function(xx, yy) {
+	addCoords_ = function(xx, yy) {
 		return new Vec2(self.x + xx, self.y + yy)
 	}
 
@@ -67,20 +67,20 @@ function Vec2(xx, yy, is_polar=false) constructor {
 		return self
 	}
 
-	set_polar = function(l, dir) {
+	setPolar = function(l, dir) {
 		self.x = lengthdir_x(l, dir)
 		self.y = lengthdir_y(l, dir)	
 		return self
 	}
 
-	add_polar = function(l, dir) {
+	addPolar = function(l, dir) {
 		self.x += lengthdir_x(l, dir)
 		self.y += lengthdir_y(l, dir)
 		return self
 	}
 	
-	add_polar_ = function(l, dir) {
-		return new Vec2(self.x, self.y).add_polar(l, dir)
+	addPolar_ = function(l, dir) {
+		return new Vec2(self.x, self.y).addPolar(l, dir)
 	}
 
 	rotated = function(angle) {
@@ -88,7 +88,7 @@ function Vec2(xx, yy, is_polar=false) constructor {
 	}
 	
 	rotate = function(angle) {
-		self.set_polar(self.len(), self.dir() + angle)
+		self.setPolar(self.len(), self.dir() + angle)
 		return self
 	}
 	
@@ -100,7 +100,7 @@ function Vec2(xx, yy, is_polar=false) constructor {
 		return (self.x == vec.X) and (self.y == vec.Y)
 	}
 	
-	move_to_vec = function(vec, sp_mag) {
+	moveToVec = function(vec, sp_mag) {
 		var delta = vec.sub_(self)
 		if delta.len() < sp_mag
 			return self.set(vec.X, vec.Y)
@@ -131,7 +131,7 @@ function Vec2(xx, yy, is_polar=false) constructor {
 	}
 
 	if is_polar == true
-		self.set_polar(xx, yy)
+		self.setPolar(xx, yy)
 }
 
 
