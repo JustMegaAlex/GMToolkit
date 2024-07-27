@@ -49,6 +49,21 @@ function Approach(val, to, amount) {
     return val + sp
 }
 
+function Approach2(val, to, ratio, treshold=infinity) {
+    var delta = to - val
+    if (abs(delta) < treshold)
+        return to
+    return val + ratio * delta
+}
+
+function ApproachAngle(val, to, amount) {
+    var delta = angle_difference(to, val)
+    if (abs(delta) < amount)
+        return to
+    var sp = amount * sign(delta)
+    return val + sp
+}
+
 function ArraySum(arr) {
     var res = 0
     for (var i = 0; i < array_length(arr); ++i) {
@@ -111,6 +126,10 @@ function ArrayEmpty(arr) {
 
 function Chance(p) {
     return random(1) < p
+}
+
+function DrawBoundingBox() {
+    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true)
 }
 
 function DrawTextCustom(xx, yy, text, font = -1, col = c_white, alpha = 1,
@@ -376,4 +395,8 @@ function ReadFileString(filename) {
         result += file_text_readln(file)
     }
     return result
+}
+
+function UsesPhysics(instance) {
+    return !is_undefined(instance.phy_active)
 }
