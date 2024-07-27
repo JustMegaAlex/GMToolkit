@@ -58,6 +58,7 @@
     {"id":{"name":"libShoot","path":"scripts/libShoot/libShoot.yy",},},
     {"id":{"name":"movement","path":"scripts/movement/movement.yy",},},
     {"id":{"name":"ui","path":"scripts/ui/ui.yy",},},
+    {"id":{"name":"utils","path":"scripts/utils/utils.yy",},},
     {"id":{"name":"shDayNight","path":"shaders/shDayNight/shDayNight.yy",},},
     {"id":{"name":"libSBullet","path":"sprites/libSBullet/libSBullet.yy",},},
     {"id":{"name":"libSButton","path":"sprites/libSButton/libSButton.yy",},},

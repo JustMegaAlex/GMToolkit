@@ -33,6 +33,7 @@
     {"name":"libShoot","order":2,"path":"scripts/libShoot/libShoot.yy",},
     {"name":"movement","order":8,"path":"scripts/movement/movement.yy",},
     {"name":"ui","order":13,"path":"scripts/ui/ui.yy",},
+    {"name":"utils","order":14,"path":"scripts/utils/utils.yy",},
     {"name":"shDayNight","order":1,"path":"shaders/shDayNight/shDayNight.yy",},
     {"name":"libSButton","order":1,"path":"sprites/libSButton/libSButton.yy",},
     {"name":"libSExplosion","order":5,"path":"sprites/libSExplosion/libSExplosion.yy",},
