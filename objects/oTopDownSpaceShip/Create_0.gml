@@ -60,9 +60,7 @@ sp_gain = 1
 image_speed = 0
 
 reload_timer = MakeTimer(20)
-reloading = 0
 bullet_sp = 20
-bullet_sprite = libSBullet
 
 side = Sides.ours
 

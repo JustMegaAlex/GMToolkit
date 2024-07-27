@@ -1,7 +1,7 @@
 
 if instance_exists(target) {
-	var angle = aim_angle()
-	var dist = sqrt(aim_dist()) * anchor_radius_gain
+	var angle = aimAngle()
+	var dist = sqrt(aimDist()) * anchor_radius_gain
 	rel_xto = lengthdir_x(dist, angle)
 	rel_yto = lengthdir_y(dist, angle)
 	var rel_hsp = abs(relx - rel_xto)*sp_ratio

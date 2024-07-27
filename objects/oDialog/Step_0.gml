@@ -11,7 +11,8 @@ if is_dialog_running {
     if collision_point(mouse_x, mouse_y, id, false, false) {
         image_alpha = 1
     }
-    if !global.dialog_on and mouseClickedOnMe() {
+    if !global.dialog_on and MouseCollision(id)
+            and mouse_check_button_pressed(mb_left) {
         intro_timer.reset()
         image_alpha = 1
         startDialog()

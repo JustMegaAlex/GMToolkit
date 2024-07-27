@@ -1,7 +1,7 @@
 
 xprev = x
 yprev = y
-move(sp, image_angle)
+Move(sp, image_angle)
 
 var hit = collision_line(x, y, xprev, yprev, target, false, true)
 if hit != noone and hit.side != side {

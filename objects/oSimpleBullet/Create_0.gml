@@ -1,5 +1,5 @@
 
-function bring_damage() {
+function bringDamage() {
 	var inst = instance_place(x, y, object_to_hit)
 	if inst and inst.side != Sides.neutral and inst.side != side {
 		inst.hit()

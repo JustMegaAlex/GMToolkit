@@ -1,6 +1,6 @@
 
 
-interacting = mouse_collision(id)
+interacting = MouseCollision(id)
 
 /// lightening if interaction
 if interacting {

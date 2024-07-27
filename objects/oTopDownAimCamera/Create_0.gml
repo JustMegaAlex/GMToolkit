@@ -1,9 +1,9 @@
 
-function aim_dist() {
+function aimDist() {
 	return point_distance(CamXCent(), CamYCent(), mouse_x, mouse_y)
 }
 
-function aim_angle() {
+function aimAngle() {
 	return point_direction(CamXCent(), CamYCent(), mouse_x, mouse_y)
 }
 

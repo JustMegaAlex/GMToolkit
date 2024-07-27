@@ -32,9 +32,8 @@ updateSp(input)
 MoveCoord(hsp, vsp)
 
 //// shooting
-reloading--
 if !reload_timer.update() and key_shoot {
-	shoot(dir, oBullet, bullet_sprite)
+	shoot(dir)
 	reload_timer.reset()
 	// audio_play_sound(snd_player_shoot_s, 0, false)
 }

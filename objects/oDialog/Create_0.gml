@@ -3,7 +3,6 @@ Dialogs trees and animation.
 Dialog objects can be interacted via inventory items (see interact())
 */
 
-depth = global.depths.dialogs
 spr_face = noone
 
 enum ExampleEvents {
@@ -89,7 +88,6 @@ function setActive(value) {
 // override this in childs if need
 // to choose between various dialogs
 function startDialog(dialog = undefined) {
-    depth = global.depths.active_dialog
     global.dialog_on = true
     if dialog == undefined {
         dialog = getDialog()
@@ -146,7 +144,6 @@ function chooseOption(option) {
 function endDialog() {
     is_dialog_running = false
     text_length = 0
-    depth = global.depths.dialogs
     // reset global flag with delay in 1 frame
     alarm[0] = 1
 }

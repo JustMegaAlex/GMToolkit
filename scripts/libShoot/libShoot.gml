@@ -6,10 +6,7 @@ enum Sides {
 	neutral,
 }
 
-default_bullet_obj = libOBullet
-default_hitable_obj = libOHitable
-
-function Shoot(dir=0, obj=global.default_bullet_obj, args={}) {
+function Shoot(dir=0, obj=libOBullet, args={}) {
 	var bullet = instance_create_layer(x, y, "Instances", obj, args)
 	bullet.dir = dir
 	bullet.side = side

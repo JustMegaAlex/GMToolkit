@@ -8,5 +8,5 @@ if !life_distance {
 xprev = x
 yprev = y
 move(sp, image_angle)
-bring_damage()
+bringDamage()
 
