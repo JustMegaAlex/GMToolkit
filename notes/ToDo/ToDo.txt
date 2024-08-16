@@ -1,3 +1,3 @@
-- shooting:
-	- adjust bullet spawn coords (outside the spawner)
-	- add bullet effects: trail, hit, shoot etc
+
+> add oSys with basic stuff like exit, restart
+

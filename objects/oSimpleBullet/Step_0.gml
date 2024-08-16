@@ -7,6 +7,6 @@ if !life_distance {
 
 xprev = x
 yprev = y
-move(sp, image_angle)
+Move(sp, image_angle)
 bringDamage()
 

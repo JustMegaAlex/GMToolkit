@@ -62,9 +62,23 @@ function UiSlider(
 	function perform_hook(slf) {}
 }
 
-function MakeSimpleFullnessBar(xx, yy, spr=spr_fullness_bar, layer="ui", fullness=1) {
-	var inst = instance_create_layer(xx, yy, layer, obj_ui_fullness_bar)
-	inst.sprite_index = spr
-	inst.bar_fullness = fullness
-	return inst
+function FullnessBar(sprite=sFullnessBar, scale=1) constructor {
+    bar_fullness = 1    // change this externally or in overriden update()
+    self.sprite = sprite
+    sprite_width = sprite_get_width(sprite)
+    sprite_height = sprite_get_height(sprite)
+    self.scale = scale
+
+    draw = function(x, y) {
+        update(self)
+        draw_sprite_ext(sprite, 0, x, y, scale, scale, 0, c_white, 1)
+        draw_sprite_part_ext(sprite,
+                        1, 0, 0, 
+                        bar_fullness * sprite_width, 
+                        sprite_height,
+                        x, y,
+                        scale, scale, c_white, 1)
+    }
+    // override
+    udpate = function() {}
 }

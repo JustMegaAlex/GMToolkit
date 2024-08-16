@@ -55,6 +55,10 @@ function DebugDrawList(list, x0, y0) {
 function DebugDrawVar(text, var_) {
     if (!global.DEBUG)
         return false
+	// text can be used as a var name
+	if var_ == undefined {
+		var_ = variable_instance_get(id, text)	
+	}
     var font = draw_get_font()
     var h_allign = draw_get_halign()
     draw_set_halign(fa_left)

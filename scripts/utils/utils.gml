@@ -170,12 +170,20 @@ function MouseDir() {
     return point_direction(id.x, id.y, mouse_x, mouse_y)
 }
 
-function InstDir(inst_to) {
-    return point_direction(id.x, id.y, inst_to.x, inst_to.y)
+function InstDir(from, to=undefined) {
+	if to == undefined {
+		to = from
+		from = id
+	}
+    return point_direction(from.x, from.y, to.x, to.y)
 }
 
-function InstDist(inst_to) {
-    return point_distance(id.x, id.y, inst_to.x, inst_to.y)
+function InstDist(from, to=undefined) {
+	if to == undefined {
+		to = from
+		from = id
+	}
+    return point_distance(from.x, from.y, to.x, to.y)
 }
 
 function PointDist(xx, yy) {
