@@ -29,7 +29,23 @@ function CamYCent() {
     return camera_get_view_y(view_camera[0]) + CamH() * 0.5;
 }
 
+function CamLeft() {
+	return CamX() + CamW()
+}
+
+function CamBottom() {
+	return CamY() + CamH()
+}
+
 function PointInCamera(xx, yy) {
     var cx = CamX(), cy = CamY();
     return (xx > cx) && (xx < (cx + CamW())) && (yy > cy) && (yy < (cy + CamH()));
 }
+
+function CollisionCamera(obj, precise=false, notme=false) {
+	return collision_rectangle(CamX(), CamY(), CamLeft(), CamBottom(), obj, precise, notme)
+}
+
+
+
+

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Light system",
-    "path":"folders/Sprites/Light system.yy",
+    "name":"Lighting system",
+    "path":"folders/Libraries/Lighting via Aura/Lighting system.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

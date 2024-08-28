@@ -408,3 +408,4 @@ function ReadFileString(filename) {
 function UsesPhysics(instance) {
     return !is_undefined(instance.phy_active)
 }
+
