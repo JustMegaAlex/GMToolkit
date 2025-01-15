@@ -1,3 +1,9 @@
+#macro struct_has variable_struct_exists
+#macro inst_has variable_instance_exists
+#macro inst_get variable_instance_get
+#macro inst_set variable_instance_set
+
+
 function ArrJoin(arr, sep) {
     var len = array_length(arr)
     if (len == 0)
@@ -110,7 +116,6 @@ function ArrayChoose(arr) {
     if ArrayEmpty(arr) {
         throw "An empty array was passed to ArrayChoose()"
     }
-    var ind = irandom(array_length(arr) - 1)
     return arr[irandom(array_length(arr) - 1)]
 }
 
@@ -122,6 +127,10 @@ function ArrayExpand(arr, from) {
 
 function ArrayEmpty(arr) {
     return array_length(arr) == 0
+}
+
+function ArrayClear(arr) {
+    return array_delete(arr, 0, array_length(arr))
 }
 
 function Chance(p) {

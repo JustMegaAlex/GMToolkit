@@ -23,23 +23,27 @@ function Vec2(xx, yy, is_polar=false) constructor {
 	}
 
 	add = function(vec) {
-		self.x += vec.X
-		self.y += vec.Y
+		self.x += vec.x
+		self.y += vec.y
 		return self
 	}
 
 	add_ = function(vec) {
-		return new Vec2(self.x + vec.X, self.y + vec.Y)
+		return new Vec2(self.x + vec.x, self.y + vec.y)
+	}
+
+	distance_to = function(vec) {
+		return point_distance(x, y, vec.x, vec.y)
 	}
 
 	sub = function(vec) {
-		self.x -= vec.X
-		self.y -= vec.Y
+		self.x -= vec.x
+		self.y -= vec.y
 		return self
 	}
 
 	sub_ = function(vec) {
-		return new Vec2(self.x - vec.X, self.y - vec.Y)
+		return new Vec2(self.x - vec.x, self.y - vec.y)
 	}
 
 	dir = function() {
@@ -97,20 +101,26 @@ function Vec2(xx, yy, is_polar=false) constructor {
 	}
 	
 	eq = function(vec) {
-		return (self.x == vec.X) and (self.y == vec.Y)
+		return (self.x == vec.x) and (self.y == vec.y)
 	}
 	
 	move_to_vec = function(vec, sp_mag) {
 		var delta = vec.sub_(self)
 		if delta.len() < sp_mag
-			return self.set(vec.X, vec.Y)
+			return self.set(vec.x, vec.y)
 		var sp = delta.normalize(sp_mag)
 		return self.add(sp)
 	}
-	
+
 	approach = function(to, sp) {
-		x = global.approach(x, to.X, sp.X)
-		y = global.approach(y, to.Y, sp.Y)
+        var diff = to.sub_(self)
+        var len = diff.len()
+        if len == 0 or len < sp {
+            self.set(to.x, to.y)
+            return;
+        }
+		x += sp * sign(diff.x) * (abs(diff.x) / len)
+		y += sp * sign(diff.y) * (abs(diff.y) / len)
 		return self
 	}
 	
@@ -134,6 +144,8 @@ function Vec2(xx, yy, is_polar=false) constructor {
 		self.set_polar(xx, yy)
 }
 
+vec2_zero = new Vec2(0, 0)
+
 
 function Line(_xst, _yst, _xend, _yend) constructor {
 	xst = _xst
@@ -144,6 +156,7 @@ function Line(_xst, _yst, _xend, _yend) constructor {
 	static mult = function(m) {
 		xend = xst + (xend - xst) * m
 		yend = yst + (yend - yst) * m
+        return self
 	}
 
 	static set = function(_xst, _yst, _xend, _yend) {
@@ -151,16 +164,19 @@ function Line(_xst, _yst, _xend, _yend) constructor {
 		yst = _yst
 		xend = _xend
 		yend = _yend
+        return self
 	}
 
 	static setst = function(_xst, _yst) {
 		xst = _xst
 		yst = _yst
+        return self
 	}
 
 	static setend = function(_xend, _yend) {
 		xend = _xend
 		yend = _yend
+        return self
 	}
 
 	static draw = function() {
@@ -173,7 +189,7 @@ function Line(_xst, _yst, _xend, _yend) constructor {
 		return new Vec2(xx, yy)
 	}
 
-    get_point_closest_to_point = function(px_or_vec, py_or_clamp, do_clamp) {
+    get_point_closest_to_point = function(px_or_vec, py_or_clamp, do_clamp=False) {
         var px, py
         if is_struct(px_or_vec) {
             px = px_or_vec.x
@@ -205,18 +221,31 @@ function Line(_xst, _yst, _xend, _yend) constructor {
         
         // Return the coordinates of the closest point
         return new Vec2(closest_x, closest_y)
-    }
+	}
 	
 	static len = function() {
 		return point_distance(xst, yst, xend, yend)
 	}
-	
+
 	rotate = function(angle) {
 		var v = new Vec2(xend - xst, yend - yst)
 		v.rotate(angle)
 		xend = xst + v.x
 		yend = yst + v.y
+		return self
 	}
+
+    rotate_relatively = function(angle, xx, yy) {
+        var v = new Vec2(xst - xx, yst - yy)
+        v.rotate(angle)
+        xst = v.x + xx
+        yst = v.y + yy
+        v.set(xend - xx, yend - yy)
+        v.rotate(angle)
+        xend = v.x + xx
+        yend = v.y + yy
+        return self
+    }
 
     angle = function() {
         return point_direction(xst, yst, xend, yend)
@@ -228,15 +257,16 @@ function Line(_xst, _yst, _xend, _yend) constructor {
 }
 
 function LineIntersection(l1, l2, segment) {
-	var x0, y0, x1, y1, x2, y2, x3, y3
-	x0 = l1.xst
-	y0 = l1.yst
-	x1 = l1.xend
-	y1 = l1.yend
-	x2 = l2.xst
-	y2 = l2.yst
-	x3 = l2.xend
-	y3 = l2.yend
+    // returns m parameter for l1
+    var x0, y0, x1, y1, x2, y2, x3, y3
+    x0 = l1.xst
+    y0 = l1.yst
+    x1 = l1.xend
+    y1 = l1.yend
+    x2 = l2.xst
+    y2 = l2.yst
+    x3 = l2.xend
+    y3 = l2.yend
     var ua, ub, ud, ux, uy, vx, vy, wx, wy
     ua = 0
     ux = x1 - x0
@@ -244,12 +274,12 @@ function LineIntersection(l1, l2, segment) {
     vx = x3 - x2
     vy = y3 - y2
 
-	// ensure lines are not parallel
-	if vy == 0
-		if uy == 0
-			return infinity
-	if ux / uy == vx / vy
-		return infinity
+    // ensure lines are not parallel
+    if vy == 0
+        if uy == 0
+            return infinity
+    if ux / uy == vx / vy
+        return infinity
 
     wx = x0 - x2
     wy = y0 - y2
@@ -259,10 +289,50 @@ function LineIntersection(l1, l2, segment) {
         if (segment) {
             ub = (ux * wy - uy * wx) / ud
             if (ua <= 0 || ua >= 1 || ub <= 0 || ub >= 1)
-				ua = 0
+                ua = 0
         }
     }
     return ua
+}
+
+
+function LineIntersection2(l1, l2, segment) {
+    /*
+        Same as LineIntersection, except it returns
+        sturct containing both ua and ub
+    */
+    var x0, y0, x1, y1, x2, y2, x3, y3
+    x0 = l1.xst
+    y0 = l1.yst
+    x1 = l1.xend
+    y1 = l1.yend
+    x2 = l2.xst
+    y2 = l2.yst
+    x3 = l2.xend
+    y3 = l2.yend
+    var ua, ub, ud, ux, uy, vx, vy, wx, wy
+    ua = 0
+    ux = x1 - x0
+    uy = y1 - y0
+    vx = x3 - x2
+    vy = y3 - y2
+
+    // ensure lines are not parallel
+    if (vy == 0 and uy == 0)
+            or ux / uy == vx / vy
+        return {segm1: infinity, segm2: infinity}
+
+    wx = x0 - x2
+    wy = y0 - y2
+    ud = vy * ux - vx * uy
+    ua = (vx * wy - vy * wx) / ud
+    ub = (ux * wy - uy * wx) / ud
+    if (segment) {
+        if (ua <= 0 || ua >= 1 || ub <= 0 || ub >= 1)
+            ua = 0
+            ub = 0
+    }
+    return {segm1: ua, segm2: ub}
 }
 
 zero2d = new Vec2(0, 0)
@@ -280,31 +350,31 @@ function InstanceLineCollisionPoint(x0_or_line, y0_or_inst, x1, y1, inst) {
         x0 = x0_or_line
         y0 = y0_or_inst
     }
-	var line = new Line(x0, y0, x1, y1)
-	var btm = inst.bbox_bottom
-	var top = inst.bbox_top
-	var left = inst.bbox_left
-	var right = inst.bbox_right
+    var line = new Line(x0, y0, x1, y1)
+    var btm = inst.bbox_bottom
+    var top = inst.bbox_top
+    var left = inst.bbox_left
+    var right = inst.bbox_right
 
-	// left bound
-	var bound = new Line(left, btm, left, top)
-	var m1 = LineIntersection(line, bound, false)
-	// right
-	bound.set(right, btm, right, top)
-	var m2 = LineIntersection(line, bound, false)
-	// bottom
-	bound.set(left, btm, right, btm)
-	var m3 = LineIntersection(line, bound, false)
-	// top
-	bound.set(left, top, right, top)
-	var m4 = LineIntersection(line, bound, false)
-	// ban wrong values
-	if (m1 < 0) m1 = infinity
-	if (m2 < 0) m2 = infinity
-	if (m3 < 0) m3 = infinity
-	if (m4 < 0) m4 = infinity
-	// the closest point
-	var m = min(m1, m2, m3, m4)
+    // left bound
+    var bound = new Line(left, btm, left, top)
+    var m1 = LineIntersection(line, bound, false)
+    // right
+    bound.set(right, btm, right, top)
+    var m2 = LineIntersection(line, bound, false)
+    // bottom
+    bound.set(left, btm, right, btm)
+    var m3 = LineIntersection(line, bound, false)
+    // top
+    bound.set(left, top, right, top)
+    var m4 = LineIntersection(line, bound, false)
+    // ban wrong values
+    if (m1 < 0) m1 = infinity
+    if (m2 < 0) m2 = infinity
+    if (m3 < 0) m3 = infinity
+    if (m4 < 0) m4 = infinity
+    // the closest point
+    var m = min(m1, m2, m3, m4)
     if m != infinity {
         return line.get_point_on(m)
     }
@@ -312,13 +382,17 @@ function InstanceLineCollisionPoint(x0_or_line, y0_or_inst, x1, y1, inst) {
 }
 
 function PointDist2d(p1, p2) {
-	return point_distance(p1.X, p1.Y, p2.X, p2.Y)
+    return point_distance(p1.x, p1.y, p2.x, p2.y)
+}
+
+function PointDir2d(p1, p2) {
+    return point_direction(p1.x, p1.y, p2.x, p2.y)
 }
 
 function GeomDrawMultiline(points, w=1, c=c_white) {
-	for (var i = 0; i < array_length(points) - 1; ++i) {
-	    var p = points[i]
-		var pp = points[i + 1]
-		draw_line_width_color(p.X, p.Y, pp.X, pp.Y, w, c, c)
-	}
+for (var i = 0; i < array_length(points) - 1; ++i) {
+    var p = points[i]
+    var pp = points[i + 1]
+        draw_line_width_color(p.x, p.y, pp.x, pp.y, w, c, c)
+}
 }

@@ -1,1 +1,4 @@
 *.yymps
+.venv
+.DS_Store
+*.json

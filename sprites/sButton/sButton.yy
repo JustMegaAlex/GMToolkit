@@ -46,8 +46,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Libraries/AlexLibs/Sprites.yy",
+    "name":"Menus",
+    "path":"folders/Libraries/AlexLibs/Menus.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
