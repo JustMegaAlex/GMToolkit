@@ -72,7 +72,7 @@
     {"id":{"name":"obj_Aura_ShadowCaster_Tiles","path":"objects/obj_Aura_ShadowCaster_Tiles/obj_Aura_ShadowCaster_Tiles.yy",},},
     {"id":{"name":"obj_Aura_Torch_Light","path":"objects/obj_Aura_Torch_Light/obj_Aura_Torch_Light.yy",},},
     {"id":{"name":"oDayNight","path":"objects/oDayNight/oDayNight.yy",},},
-    {"id":{"name":"oDialog","path":"objects/oDialog/oDialog.yy",},},
+    {"id":{"name":"oDialogBranched","path":"objects/oDialogBranched/oDialogBranched.yy",},},
     {"id":{"name":"oInput","path":"objects/oInput/oInput.yy",},},
     {"id":{"name":"oLightingControl","path":"objects/oLightingControl/oLightingControl.yy",},},
     {"id":{"name":"oLightingSysInstance","path":"objects/oLightingSysInstance/oLightingSysInstance.yy",},},
