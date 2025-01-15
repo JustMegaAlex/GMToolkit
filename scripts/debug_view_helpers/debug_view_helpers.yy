@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"debug_view_helpers",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Libraries/AlexLibs/Scripts.yy",
+    "name":"DebugOverlayViews",
+    "path":"folders/Libraries/AlexLibs/DebugOverlayViews.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
